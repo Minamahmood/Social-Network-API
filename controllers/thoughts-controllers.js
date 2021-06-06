@@ -37,3 +37,20 @@ thoughtsControllers = {
                     res.status(400).json(err);
                 });
         },
+        createThoughts({ body }, res) {
+            Thoughts.create(body)
+                .then(({ username, _id }) => {
+                    return User.findOneAndUpdate({ username: username }, { $push: { thoughts: _id } }, { new: true, runValidators: true })
+                })
+                .then(dbUserData => {
+                    if (!dbUserData) {
+                        res.status(404).json({ message: 'No user found at this id!' });
+                        return;
+                    }
+                    res.json(dbUserData);
+                })
+                .catch(err => {
+                    console.log(err);
+                    res.status(400).json(err);
+                });
+        },
