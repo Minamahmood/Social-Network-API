@@ -68,3 +68,21 @@ thoughtsControllers = {
                     res.status(400).json(err)
                 })
         },
+        deleteThoughts({ params }, res) {
+            Thoughts.findOneAndDelete({ _id: params.id })
+                .then(({ username }) => {
+                    return User.findOneAndUpdate({ username: username }, { $pull: { thoughts: params.id } }, { new: true })
+                })
+                .then(dbUserData => {
+                    if (!dbUserData) {
+                        res.status(404).json({ message: 'No user found at this id' });
+                        return;
+                    }
+
+                    res.json(dbUserData);
+                })
+                .catch(err => {
+                    console.log(err);
+                    res.status(400).json(err);
+                })
+        },
