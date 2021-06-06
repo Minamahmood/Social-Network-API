@@ -18,3 +18,9 @@ thoughtsControllers = {
 
                 });
         }
+        getThoughtsById({ params }, res) {
+            Thoughts.findOne({ _id: params.id })
+                .populate({
+                    path: 'reactions',
+                    select: '-__v'
+                })
