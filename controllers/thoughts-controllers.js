@@ -24,3 +24,16 @@ thoughtsControllers = {
                     path: 'reactions',
                     select: '-__v'
                 })
+                .select('-__v')
+                .then(dbThoughtsData => {
+                    if (!dbThoughtsData) {
+                        res.status(404).json({ message: 'No thought found at this id' });
+                        return;
+                    }
+                    res.json(dbThoughtsData);
+                })
+                .catch(err => {
+                    console.log(err);
+                    res.status(400).json(err);
+                });
+        },
