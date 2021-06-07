@@ -63,3 +63,27 @@ const userController = {
                     res.status(400).json(err);
                 });
         },
+        deleteUser({ params }, res) {
+            User.findByIdAndDelete({ _id: params.id })
+                .then(dbUserData => {
+                    dbUserData.thoughts.forEach(thought => {
+                        Thoughts.findOneAndDelete({ _id: thought })
+                            .then(dbThoughtData => {
+                                if (!dbThoughtData) {
+                                    res.status(500).json({ message: 'there was an error!' });
+                                    return;
+                                }
+
+                                res.json(dbUserData)
+                            })
+                            .catch(err => {
+                                console.log(err);
+                                res.status(400).json(err);
+                            });
+                    })
+                })
+                .catch(err => {
+                    console.log(err);
+                    res.status(400).json(err);
+                });
+        },
