@@ -38,8 +38,7 @@ API routes were tested using Insomnia Core.and you will be able to successfully 
 
 -Node
 -Express
--MYSQL
--Sequelize
+-mongoos
 
 ## video walkthrough
 
