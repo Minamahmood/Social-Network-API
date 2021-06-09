@@ -41,12 +41,10 @@ API routes were tested using Insomnia Core.and you will be able to successfully 
 -MYSQL
 -Sequelize
 
-## links
+## video walkthrough
 
 ![example](https://user-images.githubusercontent.com/56496370/121313322-216a8280-c8bb-11eb-9fe1-ccf791d52611.gif)
 
 # Repo
 
 https://github.com/Minamahmood/Social-Network-API
-
-## video walkthrough
