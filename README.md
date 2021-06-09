@@ -26,11 +26,11 @@ API routes were tested using Insomnia Core.and you will be able to successfully 
 
 ![MIT License](https://img.shields.io/badge/License-MIT-Green)
 
-## INSTALLATION: npm instalition MYSQL NODE.JS
+## INSTALLATION: npm instalition NODE.JS
 
 ## TEST: N/A
 
-## USAGE: need node and MYSQL instulation and mongoos and express
+## USAGE: need node and mongoos and express
 
 ## CONTRIBUTING: N/A
 
